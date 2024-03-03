@@ -1,6 +1,8 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+
+import { ThemeProvider } from '@/components/providers/theme-provider';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -30,8 +32,17 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          storageKey="mesh-theme"
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
