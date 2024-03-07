@@ -11,6 +11,7 @@
     "type-check": "tsc --pretty --noEmit"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^4.30.7",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
@@ -22,7 +23,8 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@trunkio/launcher": "^1.3.0",
