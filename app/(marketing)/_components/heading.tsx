@@ -1,8 +1,10 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useConvexAuth } from 'convex/react';
+import { SignInButton } from '@clerk/clerk-react';
 
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/spinner';
@@ -26,9 +28,17 @@ export function Heading() {
       )}
       {isAuthenticated && !isLoading && (
         <Button>
-          Enter Mesh
+          <Link href="/documents">Enter Mesh</Link>
           <ArrowRight className="h-4 w-4 ml-2" />
         </Button>
+      )}
+      {!isAuthenticated && !isLoading && (
+        <SignInButton mode="modal">
+          <Button>
+            Get Mesh free
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+        </SignInButton>
       )}
     </div>
   );
