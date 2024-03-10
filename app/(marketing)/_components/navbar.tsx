@@ -41,7 +41,7 @@ export function Navbar() {
         {isAuthenticated && !isLoading && (
           <>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/documents">Enter Jotion</Link>
+              <Link href="/documents">Enter Mesh</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
           </>
