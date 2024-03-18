@@ -18,7 +18,19 @@ export function Navigation() {
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    } else {
+      resetWidth();
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    }
+  }, [pathname, isMobile]);
 
   function handleMouseDown(
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
