@@ -126,7 +126,11 @@ export function Navigation() {
       >
         <nav className="bg-transparent px-3 py-2 w-full">
           {isCollapsed && (
-            <MenuIcon role="button" className="h-6 w-6 text-muted-foreground" />
+            <MenuIcon
+              onClick={resetWidth}
+              role="button"
+              className="h-6 w-6 text-muted-foreground"
+            />
           )}
         </nav>
       </div>
