@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronDown, ChevronRight, type LucideIcon } from 'lucide-react';
 
+import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import type { Id } from '@/convex/_generated/dataModel';
 
@@ -69,3 +70,21 @@ export function Item({
     </div>
   );
 }
+
+interface ItemSkeletonProps {
+  level?: number;
+}
+
+Item.Skeleton = function ItemSkeleton({ level }: Readonly<ItemSkeletonProps>) {
+  return (
+    <div
+      style={{
+        paddingLeft: level ? `${level * 12 + 25}px` : '12px',
+      }}
+      className="flex gap-x-2 py-[3px]"
+    >
+      <Skeleton className="h-4 w-4" />
+      <Skeleton className="h-4 w-[30%]" />
+    </div>
+  );
+};
