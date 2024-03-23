@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useMediaQuery } from 'usehooks-ts';
 import { useMutation } from 'convex/react';
 import { toast } from 'sonner';
-import { ChevronsLeft, MenuIcon, PlusCircle } from 'lucide-react';
+import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { api } from '@/convex/_generated/api';
@@ -135,6 +135,8 @@ export function Navigation() {
         </div>
         <div>
           <UserItem />
+          <Item onClick={() => {}} label="Search" icon={Search} isSearch />
+          <Item onClick={() => {}} label="Settings" icon={Settings} />
           <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
