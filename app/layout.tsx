@@ -1,5 +1,6 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import type { Metadata } from 'next';
 
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
             enableSystem
             storageKey="mesh-theme"
           >
+            <Toaster position="bottom-center" />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
