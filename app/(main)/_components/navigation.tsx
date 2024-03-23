@@ -15,6 +15,7 @@ import {
 
 import { cn } from '@/lib/utils';
 import { api } from '@/convex/_generated/api';
+import { DocumentList } from '@/app/(main)/_components/document-list';
 
 import { UserItem } from './user-item';
 import { Item } from './item';
@@ -146,7 +147,7 @@ export function Navigation() {
           <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
-
+          <DocumentList />
         </div>
         <div
           onMouseDown={handleMouseDown}
