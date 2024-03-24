@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useQuery, useMutation } from 'convex/react';
 import { toast } from 'sonner';
-import { Search } from 'lucide-react';
+import { Search, Trash, Undo } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
 import { Spinner } from '@/components/spinner';
@@ -87,8 +87,20 @@ export function TrashBox() {
           >
             <span className="truncate pl-2">{document.title}</span>
             <div className="flex items-center">
-              <div>RESTORE</div>
-              <div>REMOVE</div>
+              <div
+                onClick={(e) => onRestore(e, document._id)}
+                role="button"
+                className="rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+              >
+                <Undo className="h-4 w-4 text-muted-foreground" />
+              </div>
+              <div
+                onClick={() => onRemove(document._id)}
+                role="button"
+                className="rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+              >
+                <Trash className="h-4 w-4 text-muted-foreground" />
+              </div>
             </div>
           </div>
         ))}
