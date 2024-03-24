@@ -1,15 +1,15 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from 'convex/react';
-import { toast } from 'sonner';
 import { useUser } from '@clerk/clerk-react';
+import { toast } from 'sonner';
 import {
   ChevronDown,
   ChevronRight,
   Plus,
-  type LucideIcon,
   MoreHorizontal,
   Trash,
+  type LucideIcon,
 } from 'lucide-react';
 
 import { Skeleton } from '@/components/ui/skeleton';
@@ -23,7 +23,6 @@ import {
 import { cn } from '@/lib/utils';
 import { api } from '@/convex/_generated/api';
 import type { Id } from '@/convex/_generated/dataModel';
-import { archive } from '@/convex/documents';
 
 interface ItemProps {
   id?: Id<'documents'>;
@@ -51,9 +50,10 @@ export function Item({
   onExpand,
 }: Readonly<ItemProps>) {
   const { user } = useUser();
+  const router = useRouter();
+
   const create = useMutation(api.documents.create);
   const archive = useMutation(api.documents.archive);
-  const router = useRouter();
 
   function handleExpand(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     event.stopPropagation();
@@ -67,7 +67,7 @@ export function Item({
     const promise = create({ title: 'Untitled', parentDocument: id }).then(
       (documentId) => {
         if (!expanded) onExpand?.();
-        // router.push(`/documents/${documentId}`);
+        router.push(`/documents/${documentId}`);
       }
     );
 
