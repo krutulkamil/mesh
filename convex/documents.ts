@@ -102,3 +102,22 @@ export const create = mutation({
     });
   },
 });
+
+export const getTrash = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error('Not Authenticated');
+    }
+
+    const userId = identity.subject;
+
+    return await ctx.db
+      .query('documents')
+      .withIndex('by_user', (query) => query.eq('userId', userId))
+      .filter((query) => query.eq(query.field('isArchived'), true))
+      .order('desc')
+      .collect();
+  },
+});
