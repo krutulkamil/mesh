@@ -15,15 +15,16 @@ import {
   Trash,
 } from 'lucide-react';
 
+import { api } from '@/convex/_generated/api';
+import { useSearch } from '@/hooks/use-search';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { DocumentList } from '@/app/(main)/_components/document-list';
-import { cn } from '@/lib/utils';
-import { api } from '@/convex/_generated/api';
 import { TrashBox } from '@/app/(main)/_components/trash-box';
+import { cn } from '@/lib/utils';
 
 import { UserItem } from './user-item';
 import { Item } from './item';
@@ -32,6 +33,7 @@ export function Navigation() {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
   const create = useMutation(api.documents.create);
+  const { onOpen } = useSearch();
 
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<null | ElementRef<'aside'>>(null);
@@ -150,7 +152,7 @@ export function Navigation() {
         </div>
         <div>
           <UserItem />
-          <Item onClick={() => {}} label="Search" icon={Search} isSearch />
+          <Item onClick={onOpen} label="Search" icon={Search} isSearch />
           <Item onClick={() => {}} label="Settings" icon={Settings} />
           <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
