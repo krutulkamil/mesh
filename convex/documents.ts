@@ -212,3 +212,22 @@ export const remove = mutation({
     return await ctx.db.delete(args.id);
   },
 });
+
+export const getSearch = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error('Not Authenticated');
+    }
+
+    const userId = identity.subject;
+
+    return await ctx.db
+      .query('documents')
+      .withIndex('by_user', (query) => query.eq('userId', userId))
+      .filter((query) => query.eq(query.field('isArchived'), false))
+      .order('desc')
+      .collect();
+  },
+});
