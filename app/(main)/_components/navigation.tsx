@@ -95,7 +95,7 @@ export function Navigation() {
 
   function resetWidth() {
     if (sidebarRef.current && navbarRef.current) {
-      setIsCollapsed(true);
+      setIsCollapsed(false);
       setIsResetting(true);
 
       sidebarRef.current.style.width = isMobile ? '100%' : '240px';
