@@ -4,6 +4,7 @@ import { useQuery } from 'convex/react';
 import { MenuIcon } from 'lucide-react';
 
 import { api } from '@/convex/_generated/api';
+import { Title } from '@/app/(main)/_components/title';
 import type { Id } from '@/convex/_generated/dataModel';
 
 interface NavbarProps {
@@ -32,7 +33,9 @@ export function Navbar({ isCollapsed, onResetWidth }: Readonly<NavbarProps>) {
           className="h-6 w-6 text-muted-foreground"
         />
       )}
-      <div className="flex items-center justify-between w-full">Navbar</div>
+      <div className="flex items-center justify-between w-full">
+        <Title initialData={document} />
+      </div>
     </nav>
   );
 }
