@@ -7,6 +7,7 @@ import { api } from '@/convex/_generated/api';
 import { Title } from '@/app/(main)/_components/title';
 import { Banner } from '@/app/(main)/_components/banner';
 import type { Id } from '@/convex/_generated/dataModel';
+import { Menu } from '@/app/(main)/_components/menu';
 
 interface NavbarProps {
   isCollapsed: boolean;
@@ -41,6 +42,9 @@ export function Navbar({ isCollapsed, onResetWidth }: Readonly<NavbarProps>) {
         )}
         <div className="flex items-center justify-between w-full">
           <Title initialData={document} />
+          <div className="flex items-center gap-x-2">
+            <Menu documentId={document._id} />
+          </div>
         </div>
       </nav>
       {document.isArchived && <Banner documentId={document._id} />}
